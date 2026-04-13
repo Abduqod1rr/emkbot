@@ -5,9 +5,13 @@ Render Web Service uchun webhook rejimida ishlaydi.
 """
 
 import os
+import sys
 import asyncio
 import logging
 import threading
+
+# ── Eng avval data/ papkasini yaratamiz (logging dan oldin!) ──────────────────
+os.makedirs("data", exist_ok=True)
 
 from telegram import (
     Update, InlineKeyboardButton, InlineKeyboardMarkup,
@@ -27,20 +31,27 @@ logging.basicConfig(
     level=logging.INFO,
     handlers=[
         logging.FileHandler("data/bot.log", encoding="utf-8"),
-        logging.StreamHandler()
+        logging.StreamHandler(sys.stdout)
     ]
 )
 logger = logging.getLogger(__name__)
 
 # ── Config ────────────────────────────────────────────────────────────────────
 BOT_TOKEN   = os.environ.get("BOT_TOKEN", "")
-RENDER_HOST = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "")   # Render avtomatik beradi
+RENDER_HOST = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "")
 PORT        = int(os.environ.get("PORT", 8080))
-USE_WEBHOOK = bool(RENDER_HOST)  # Renderdagi bo'lsa webhook, lokaldagi bo'lsa polling
+USE_WEBHOOK = bool(RENDER_HOST)
 
-# Admin telegram IDlari (vergul bilan): "123456,789012"
 _admin_env = os.environ.get("ADMIN_IDS", "")
 ADMIN_IDS  = {int(x) for x in _admin_env.split(",") if x.strip().isdigit()}
+
+# ── BOT_TOKEN tekshiruvi ──────────────────────────────────────────────────────
+if not BOT_TOKEN:
+    print("CRITICAL: BOT_TOKEN environment variable o'rnatilmagan!", flush=True)
+    print("Render Dashboard > Environment > BOT_TOKEN ga tokeningizni kiriting.", flush=True)
+    sys.exit(1)
+
+logger.info(f"Bot ishga tushmoqda | Webhook: {USE_WEBHOOK} | Host: {RENDER_HOST} | Port: {PORT}")
 
 # ── States ────────────────────────────────────────────────────────────────────
 (
@@ -527,7 +538,6 @@ async def cancel_cmd(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 # ── App ────────────────────────────────────────────────────────────────────────
 
 def build_app():
-    os.makedirs("data", exist_ok=True)
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
