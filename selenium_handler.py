@@ -7,15 +7,15 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 from webdriver_manager.chrome import ChromeDriverManager
 
 logger = logging.getLogger(__name__)
 
-LOGIN_URL   = "https://kundalik.com/login"
-SITE_URL    = "https://kundalik.com"
-WAIT_TIMEOUT = 15
-ACTIVE_WAIT  = 3
+LOGIN_URL    = "https://kundalik.com/login"
+SITE_URL     = "https://kundalik.com"
+WAIT_TIMEOUT = 20
+ACTIVE_WAIT  = 2
 
 
 def _make_driver() -> webdriver.Chrome:
@@ -27,16 +27,55 @@ def _make_driver() -> webdriver.Chrome:
     options.add_argument("--window-size=1280,800")
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--disable-extensions")
+    options.add_argument("--disable-setuid-sandbox")
+    options.add_argument("--remote-debugging-port=0")
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option("useAutomationExtension", False)
 
-    # webdriver-manager Chrome versiyasiga mos ChromeDriver ni avtomatik topadi
     service = Service(ChromeDriverManager().install())
     driver  = webdriver.Chrome(service=service, options=options)
+    driver.set_page_load_timeout(30)
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
     return driver
+
+
+def _is_logged_in(driver: webdriver.Chrome) -> bool:
+    """Login muvaffaqiyatli bo'lganini tekshiradi."""
+    current_url = driver.current_url
+    # Hali login sahifasida bo'lsa — login xato
+    if "/login" in current_url:
+        return False
+    # Dashboard/home sahifasiga o'tgan bo'lsa — muvaffaqiyatli
+    return True
+
+
+def _do_logout(driver: webdriver.Chrome):
+    """Sessionni tozalash uchun logout qiladi."""
+    try:
+        # Birinchi usul: to'g'ridan URL orqali
+        driver.get(f"{SITE_URL}/logout")
+        time.sleep(1)
+        # Logout ishlagan bo'lsa login sahifasiga qaytadi
+        if "/login" in driver.current_url or driver.current_url == SITE_URL + "/":
+            return
+    except Exception:
+        pass
+
+    try:
+        driver.get(f"{SITE_URL}/auth/logout")
+        time.sleep(1)
+        return
+    except Exception:
+        pass
+
+    # Ikkinchi usul: cookie tozalash
+    try:
+        driver.delete_all_cookies()
+        driver.execute_script("localStorage.clear(); sessionStorage.clear();")
+    except Exception:
+        pass
 
 
 def _login_and_wait(driver: webdriver.Chrome, login: str, password: str) -> bool:
@@ -44,50 +83,109 @@ def _login_and_wait(driver: webdriver.Chrome, login: str, password: str) -> bool
         driver.get(LOGIN_URL)
         wait = WebDriverWait(driver, WAIT_TIMEOUT)
 
-        inp = wait.until(EC.presence_of_element_located((By.NAME, "username")))
-        inp.clear()
-        inp.send_keys(login)
-
-        pwd = driver.find_element(By.NAME, "password")
-        pwd.clear()
-        pwd.send_keys(password)
-
-        driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
-        wait.until(EC.url_changes(LOGIN_URL))
-        time.sleep(ACTIVE_WAIT)
-
-        # Logout
-        for url in [f"{SITE_URL}/logout", f"{SITE_URL}/auth/logout"]:
+        # Login field — turli selectorlarni sinab ko'ramiz
+        login_field = None
+        for selector in [
+            (By.NAME, "username"),
+            (By.NAME, "login"),
+            (By.ID, "username"),
+            (By.CSS_SELECTOR, "input[type='text']"),
+            (By.CSS_SELECTOR, "input[placeholder*='ogin']"),
+            (By.CSS_SELECTOR, "input[placeholder*='ser']"),
+        ]:
             try:
-                driver.get(url)
-                time.sleep(1)
-                return True
-            except Exception:
+                login_field = wait.until(EC.presence_of_element_located(selector))
+                break
+            except TimeoutException:
                 continue
 
-        try:
-            driver.find_element(
-                By.CSS_SELECTOR, "a[href*='logout'], button[class*='logout']"
-            ).click()
-            time.sleep(1)
-        except NoSuchElementException:
-            pass
+        if not login_field:
+            logger.error(f"Login field topilmadi: {login}")
+            return False
 
+        login_field.clear()
+        login_field.send_keys(login)
+
+        # Password field
+        pwd_field = None
+        for selector in [
+            (By.NAME, "password"),
+            (By.ID, "password"),
+            (By.CSS_SELECTOR, "input[type='password']"),
+        ]:
+            try:
+                pwd_field = driver.find_element(*selector)
+                break
+            except NoSuchElementException:
+                continue
+
+        if not pwd_field:
+            logger.error(f"Password field topilmadi: {login}")
+            return False
+
+        pwd_field.clear()
+        pwd_field.send_keys(password)
+
+        # Submit tugmasi
+        submit = None
+        for selector in [
+            (By.CSS_SELECTOR, "button[type='submit']"),
+            (By.CSS_SELECTOR, "input[type='submit']"),
+            (By.XPATH, "//button[contains(text(),'Kirish') or contains(text(),'Login') or contains(text(),'Войти')]"),
+        ]:
+            try:
+                submit = driver.find_element(*selector)
+                break
+            except NoSuchElementException:
+                continue
+
+        if not submit:
+            logger.error(f"Submit tugmasi topilmadi: {login}")
+            return False
+
+        submit.click()
+
+        # URL o'zgarishini kutamiz
+        try:
+            wait.until(EC.url_changes(LOGIN_URL))
+        except TimeoutException:
+            # URL o'zgarmagan — login xato (noto'g'ri parol)
+            logger.warning(f"Login xato (URL o'zgarmadi): {login}")
+            return False
+
+        time.sleep(ACTIVE_WAIT)
+
+        # Login muvaffaqiyatli bo'lganini tekshir
+        if not _is_logged_in(driver):
+            logger.warning(f"Login xato (hali login sahifasida): {login}")
+            return False
+
+        logger.info(f"Login OK: {login}")
+
+        # Logout — sessionni tozalash
+        _do_logout(driver)
         return True
 
     except TimeoutException:
         logger.warning(f"Timeout: {login}")
         return False
+    except WebDriverException as e:
+        logger.error(f"WebDriver xato ({login}): {e}")
+        return False
     except Exception as e:
-        logger.error(f"Xato ({login}): {e}")
+        logger.error(f"Kutilmagan xato ({login}): {e}")
         return False
 
 
 def make_all_online(students: list, progress_callback=None) -> dict:
     total   = len(students)
-    results = {"total": total,
-               "student_ok": 0, "student_fail": 0,
-               "parent_ok":  0, "parent_fail":  0}
+    results = {
+        "total":        total,
+        "student_ok":   0,
+        "student_fail": 0,
+        "parent_ok":    0,
+        "parent_fail":  0,
+    }
 
     driver = _make_driver()
     try:
@@ -106,6 +204,9 @@ def make_all_online(students: list, progress_callback=None) -> dict:
                 if progress_callback:
                     progress_callback(idx, total, fio, "ota-ona", ok_p)
     finally:
-        driver.quit()
+        try:
+            driver.quit()
+        except Exception:
+            pass
 
     return results
