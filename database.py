@@ -1,156 +1,154 @@
-import json
 import os
 import hashlib
 from typing import Optional
+from pymongo import MongoClient
 
-DB_FILE = os.environ.get("DB_PATH", "data/db.json")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://Ismoiljon:27282728@cluster.hwngmtv.mongodb.net/?appName=Cluster")
+DB_NAME   = "kundalik_bot"
+
+_client = None
+_db     = None
+
+
+def _get_db():
+    global _client, _db
+    if _db is None:
+        _client = MongoClient(MONGO_URI)
+        _db     = _client[DB_NAME]
+    return _db
 
 
 def _hash(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
 
 
-def load_db() -> dict:
-    if not os.path.exists(DB_FILE):
-        data = {"teachers": {}, "telegram_links": {}}
-        save_db(data)
-        return data
-    with open(DB_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_db(data: dict):
-    os.makedirs(os.path.dirname(DB_FILE), exist_ok=True)
-    with open(DB_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
 # ── Teacher ────────────────────────────────────────────────────────────────────
 
 def add_teacher(login: str, password: str, fio: str) -> bool:
-    db = load_db()
-    if login in db["teachers"]:
+    col = _get_db()["teachers"]
+    if col.find_one({"login": login}):
         return False
-    db["teachers"][login] = {
+    col.insert_one({
+        "login": login,
         "fio": fio,
         "password_hash": _hash(password),
         "students": []
-    }
-    save_db(db)
+    })
     return True
 
 
 def verify_teacher(login: str, password: str) -> bool:
-    db = load_db()
-    teacher = db["teachers"].get(login)
+    col     = _get_db()["teachers"]
+    teacher = col.find_one({"login": login})
     if not teacher:
         return False
     return teacher["password_hash"] == _hash(password)
 
 
 def get_teacher(login: str) -> Optional[dict]:
-    db = load_db()
-    return db["teachers"].get(login)
+    col     = _get_db()["teachers"]
+    teacher = col.find_one({"login": login}, {"_id": 0})
+    return teacher
 
 
 def get_all_teachers() -> dict:
-    return load_db()["teachers"]
+    col      = _get_db()["teachers"]
+    teachers = col.find({}, {"_id": 0})
+    return {t["login"]: t for t in teachers}
 
 
 def delete_teacher(login: str) -> bool:
-    db = load_db()
-    if login not in db["teachers"]:
+    col    = _get_db()["teachers"]
+    result = col.delete_one({"login": login})
+    if result.deleted_count == 0:
         return False
-    del db["teachers"][login]
-    db["telegram_links"] = {k: v for k,
-                            v in db["telegram_links"].items() if v != login}
-    save_db(db)
+    _get_db()["telegram_links"].delete_many({"teacher_login": login})
     return True
 
 
 def change_teacher_password(login: str, new_password: str) -> bool:
-    db = load_db()
-    if login not in db["teachers"]:
-        return False
-    db["teachers"][login]["password_hash"] = _hash(new_password)
-    save_db(db)
-    return True
+    col    = _get_db()["teachers"]
+    result = col.update_one(
+        {"login": login},
+        {"$set": {"password_hash": _hash(new_password)}}
+    )
+    return result.modified_count > 0
 
 
 # ── Telegram ↔ Teacher link ────────────────────────────────────────────────────
 
 def link_telegram(telegram_id: int, teacher_login: str):
-    db = load_db()
-    db["telegram_links"][str(telegram_id)] = teacher_login
-    save_db(db)
+    col = _get_db()["telegram_links"]
+    col.update_one(
+        {"telegram_id": str(telegram_id)},
+        {"$set": {"teacher_login": teacher_login}},
+        upsert=True
+    )
 
 
 def unlink_telegram(telegram_id: int):
-    db = load_db()
-    db["telegram_links"].pop(str(telegram_id), None)
-    save_db(db)
+    _get_db()["telegram_links"].delete_one({"telegram_id": str(telegram_id)})
 
 
 def get_teacher_by_telegram(telegram_id: int) -> Optional[str]:
-    return load_db()["telegram_links"].get(str(telegram_id))
+    col  = _get_db()["telegram_links"]
+    link = col.find_one({"telegram_id": str(telegram_id)})
+    return link["teacher_login"] if link else None
 
 
 # ── Students (per-teacher) ─────────────────────────────────────────────────────
 
 def get_students(teacher_login: str) -> list:
-    return load_db()["teachers"].get(teacher_login, {}).get("students", [])
+    col     = _get_db()["teachers"]
+    teacher = col.find_one({"login": teacher_login}, {"_id": 0})
+    return teacher.get("students", []) if teacher else []
 
 
 def add_student(teacher_login: str, fio: str, login: str, password: str,
                 parent_login: str, parent_password: str) -> bool:
-    db = load_db()
-    teacher = db["teachers"].get(teacher_login)
+    col     = _get_db()["teachers"]
+    teacher = col.find_one({"login": teacher_login})
     if not teacher:
         return False
-    if any(s["login"] == login for s in teacher["students"]):
+    if any(s["login"] == login for s in teacher.get("students", [])):
         return False
-    teacher["students"].append({
-        "fio": fio,
-        "login": login,
-        "password": password,
-        "parent": {"login": parent_login, "password": parent_password}
-    })
-    save_db(db)
+    col.update_one(
+        {"login": teacher_login},
+        {"$push": {"students": {
+            "fio": fio,
+            "login": login,
+            "password": password,
+            "parent": {"login": parent_login, "password": parent_password}
+        }}}
+    )
     return True
 
 
 def delete_student(teacher_login: str, student_login: str) -> bool:
-    db = load_db()
-    teacher = db["teachers"].get(teacher_login)
-    if not teacher:
-        return False
-    before = len(teacher["students"])
-    teacher["students"] = [s for s in teacher["students"]
-                           if s["login"] != student_login]
-    if len(teacher["students"]) < before:
-        save_db(db)
-        return True
-    return False
+    col    = _get_db()["teachers"]
+    result = col.update_one(
+        {"login": teacher_login},
+        {"$pull": {"students": {"login": student_login}}}
+    )
+    return result.modified_count > 0
 
 
 def update_student(teacher_login: str, student_login: str, field: str, value: str) -> bool:
-    db = load_db()
-    teacher = db["teachers"].get(teacher_login)
-    if not teacher:
+    col        = _get_db()["teachers"]
+    field_map  = {
+        "fio":             "students.$.fio",
+        "password":        "students.$.password",
+        "parent_login":    "students.$.parent.login",
+        "parent_password": "students.$.parent.password",
+    }
+    mongo_field = field_map.get(field)
+    if not mongo_field:
         return False
-    for s in teacher["students"]:
-        if s["login"] == student_login:
-            if field == "fio":
-                s["fio"] = value
-            elif field == "password":
-                s["password"] = value
-            elif field == "parent_login":
-                s["parent"]["login"] = value
-            elif field == "parent_password":
-                s["parent"]["password"] = value
-            save_db(db)
-            return True
-    return False
+    result = col.update_one(
+        {"login": teacher_login, "students.login": student_login},
+        {"$set": {mongo_field: value}}
+    )
+    return result.modified_count > 0
 
 
 def get_student(teacher_login: str, student_login: str) -> Optional[dict]:
