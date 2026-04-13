@@ -1,0 +1,16 @@
+services:
+  - type: worker          # Polling bot = background worker (HTTP server shart emas)
+    name: kundalik-bot
+    runtime: docker       # Dockerfile ishlatamiz (Chrome uchun)
+    dockerfilePath: ./Dockerfile
+    disk:
+      name: bot-data
+      mountPath: /app/data  # students.json shu yerda saqlanadi (persistent disk)
+      sizeGB: 1
+    envVars:
+      - key: BOT_TOKEN
+        sync: false       # Render dashboard dan qo'lda kiriting
+      - key: ALLOWED_USER_IDS
+        sync: false       # Ixtiyoriy: "123456,789012" formatida
+      - key: DB_PATH
+        value: /app/data/students.json
