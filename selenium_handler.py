@@ -8,11 +8,12 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from webdriver_manager.chrome import ChromeDriverManager
 
 logger = logging.getLogger(__name__)
 
-LOGIN_URL  = "https://kundalik.com/login"
-SITE_URL   = "https://kundalik.com"
+LOGIN_URL   = "https://kundalik.com/login"
+SITE_URL    = "https://kundalik.com"
 WAIT_TIMEOUT = 15
 ACTIVE_WAIT  = 3
 
@@ -29,14 +30,9 @@ def _make_driver() -> webdriver.Chrome:
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option("useAutomationExtension", False)
 
-    chromedriver = "/usr/local/bin/chromedriver"
-    if os.path.exists(chromedriver):
-        service = Service(chromedriver)
-    else:
-        from webdriver_manager.chrome import ChromeDriverManager
-        service = Service(ChromeDriverManager().install())
-
-    driver = webdriver.Chrome(service=service, options=options)
+    # webdriver-manager Chrome versiyasiga mos ChromeDriver ni avtomatik topadi
+    service = Service(ChromeDriverManager().install())
+    driver  = webdriver.Chrome(service=service, options=options)
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
@@ -48,17 +44,16 @@ def _login_and_wait(driver: webdriver.Chrome, login: str, password: str) -> bool
         driver.get(LOGIN_URL)
         wait = WebDriverWait(driver, WAIT_TIMEOUT)
 
-        inp_user = wait.until(EC.presence_of_element_located((By.NAME, "username")))
-        inp_user.clear()
-        inp_user.send_keys(login)
+        inp = wait.until(EC.presence_of_element_located((By.NAME, "username")))
+        inp.clear()
+        inp.send_keys(login)
 
-        inp_pass = driver.find_element(By.NAME, "password")
-        inp_pass.clear()
-        inp_pass.send_keys(password)
+        pwd = driver.find_element(By.NAME, "password")
+        pwd.clear()
+        pwd.send_keys(password)
 
         driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
         wait.until(EC.url_changes(LOGIN_URL))
-
         time.sleep(ACTIVE_WAIT)
 
         # Logout
@@ -84,14 +79,15 @@ def _login_and_wait(driver: webdriver.Chrome, login: str, password: str) -> bool
         logger.warning(f"Timeout: {login}")
         return False
     except Exception as e:
-        logger.error(f"Error ({login}): {e}")
+        logger.error(f"Xato ({login}): {e}")
         return False
 
 
 def make_all_online(students: list, progress_callback=None) -> dict:
-    total = len(students)
-    results = {"total": total, "student_ok": 0, "student_fail": 0,
-               "parent_ok": 0, "parent_fail": 0}
+    total   = len(students)
+    results = {"total": total,
+               "student_ok": 0, "student_fail": 0,
+               "parent_ok":  0, "parent_fail":  0}
 
     driver = _make_driver()
     try:
