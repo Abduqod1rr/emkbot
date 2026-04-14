@@ -1,0 +1,772 @@
+2026-04-14 21:42:46,336 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:43:28,670 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:44:08,784 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:44:11,503 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:44:12,097 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:44:12,261 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:44:12,266 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:44:12,736 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:44:13,144 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de6edd48e7687941377f8d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "69de6edd48e7687941377f8d"}, "remainingTimeMS": 29}
+2026-04-14 21:47:43,192 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:47:45,868 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:47:48,865 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:47:49,018 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:47:49,022 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:47:49,554 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:47:49,563 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,582 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,590 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,596 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,599 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,606 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,619 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,626 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,631 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,641 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,652 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,659 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:49,664 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:47:59,837 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:48:03,844 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:48:03,851 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 94, in get_teacher_by_telegram
+    col  = _get_db()["telegram_links"]
+           ~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 16, in _get_db
+    _client = MongoClient(MONGO_URI)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 774, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 536, in parse_uri
+    nodes = split_hosts(hosts, default_port=None)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 381, in split_hosts
+    nodes.append(parse_host(entity, port))
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\uri_parser.py", line 147, in parse_host
+    raise ValueError(f"Port must be an integer between 0 and 65535: {port!r}")
+ValueError: Port must be an integer between 0 and 65535: 'Ttheone001.@emkbt.9oq3evw.mongodb.net'
+2026-04-14 21:48:14,028 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:48:24,216 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:48:34,391 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:51:50,921 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:51:53,340 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:51:53,876 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:51:54,041 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:51:54,044 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:52:05,128 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:52:15,298 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:52:25,476 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:52:35,647 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:52:45,816 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:52:47,243 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:53:43,813 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:53:46,715 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:53:47,258 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:53:47,444 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:53:47,448 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:53:47,940 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:53:48,489 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de711cf7c7960ad9d78e1f, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "69de711cf7c7960ad9d78e1f"}, "remainingTimeMS": 29}
+2026-04-14 21:55:03,615 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:55:06,385 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:55:07,002 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:55:07,175 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:55:07,182 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:55:07,669 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:55:08,012 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de716b1b1d522e3a7768cc, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "69de716b1b1d522e3a7768cc"}, "remainingTimeMS": 29}
+2026-04-14 21:55:38,085 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 95, in get_teacher_by_telegram
+    link = col.find_one({"telegram_id": str(telegram_id)})
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\collection.py", line 1495, in find_one
+    for result in cursor.limit(-1):
+                  ~~~~~~~~~~~~^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1243, in next
+    if len(self.__data) or self._refresh():
+                           ~~~~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1160, in _refresh
+    self.__send_message(q)
+    ~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1039, in __send_message
+    response = client._run_operation(
+        operation, self._unpack_response, address=self.__address
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1425, in _run_operation
+    return self._retryable_read(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _cmd,
+        ^^^^^
+    ...<4 lines>...
+        operation=operation.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1534, in _retryable_read
+    return self._retry_internal(
+           ~~~~~~~~~~~~~~~~~~~~^
+        func,
+        ^^^^^
+    ...<7 lines>...
+        operation_id=operation_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1501, in _retry_internal
+    ).run()
+      ~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2347, in run
+    return self._read() if self._is_read else self._write()
+           ~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2477, in _read
+    self._server = self._get_server()
+                   ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2433, in _get_server
+    return self._client._select_server(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._server_selector,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        operation_id=self._operation_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1316, in _select_server
+    server = topology.select_server(
+        server_selector,
+    ...<2 lines>...
+        operation_id=operation_id,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 369, in select_server
+    server = self._select_server(
+        selector,
+    ...<4 lines>...
+        operation_id=operation_id,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 347, in _select_server
+    servers = self.select_servers(
+        selector, operation, server_selection_timeout, address, operation_id
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 254, in select_servers
+    server_descriptions = self._select_servers_loop(
+        selector, server_timeout, operation, operation_id, address
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 304, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+        f"{self._error_message(selector)}, Timeout: {timeout}s, Topology Description: {self.description!r}"
+    )
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 69de716b1b1d522e3a7768cc, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-04-14 21:55:38,107 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de716b1b1d522e3a7768cc, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>", "clientId": {"$oid": "69de716b1b1d522e3a7768cc"}, "remainingTimeMS": 29}
+2026-04-14 21:55:59,518 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:56:02,050 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:56:02,579 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:56:02,745 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:56:02,748 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:56:03,262 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:56:03,339 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de71a3822311344acbc797, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "69de71a3822311344acbc797"}, "remainingTimeMS": 29}
+2026-04-14 21:56:33,496 | ERROR | telegram.ext.Application | No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 841, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\bot.py", line 131, in cmd_start
+    linked = db.get_teacher_by_telegram(user_id)
+  File "C:\Users\mcuch\Desktop\emkbot\Kundalikcom-helper\database.py", line 95, in get_teacher_by_telegram
+    link = col.find_one({"telegram_id": str(telegram_id)})
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\collection.py", line 1495, in find_one
+    for result in cursor.limit(-1):
+                  ~~~~~~~~~~~~^^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1243, in next
+    if len(self.__data) or self._refresh():
+                           ~~~~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1160, in _refresh
+    self.__send_message(q)
+    ~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\cursor.py", line 1039, in __send_message
+    response = client._run_operation(
+        operation, self._unpack_response, address=self.__address
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1425, in _run_operation
+    return self._retryable_read(
+           ~~~~~~~~~~~~~~~~~~~~^
+        _cmd,
+        ^^^^^
+    ...<4 lines>...
+        operation=operation.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1534, in _retryable_read
+    return self._retry_internal(
+           ~~~~~~~~~~~~~~~~~~~~^
+        func,
+        ^^^^^
+    ...<7 lines>...
+        operation_id=operation_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1501, in _retry_internal
+    ).run()
+      ~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2347, in run
+    return self._read() if self._is_read else self._write()
+           ~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2477, in _read
+    self._server = self._get_server()
+                   ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 2433, in _get_server
+    return self._client._select_server(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._server_selector,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        operation_id=self._operation_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\mongo_client.py", line 1316, in _select_server
+    server = topology.select_server(
+        server_selector,
+    ...<2 lines>...
+        operation_id=operation_id,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 369, in select_server
+    server = self._select_server(
+        selector,
+    ...<4 lines>...
+        operation_id=operation_id,
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 347, in _select_server
+    servers = self.select_servers(
+        selector, operation, server_selection_timeout, address, operation_id
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 254, in select_servers
+    server_descriptions = self._select_servers_loop(
+        selector, server_timeout, operation, operation_id, address
+    )
+  File "C:\Users\mcuch\Desktop\emkbot\vbv\Lib\site-packages\pymongo\topology.py", line 304, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+        f"{self._error_message(selector)}, Timeout: {timeout}s, Topology Description: {self.description!r}"
+    )
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 69de71a3822311344acbc797, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-04-14 21:56:33,513 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de71a3822311344acbc797, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1081) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>", "clientId": {"$oid": "69de71a3822311344acbc797"}, "remainingTimeMS": 29}
+2026-04-14 21:59:07,802 | INFO | __main__ | Bot ishga tushmoqda | Webhook: False | Host:  | Port: 8080
+2026-04-14 21:59:10,577 | INFO | __main__ | Polling rejimi (lokal)
+2026-04-14 21:59:11,095 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getMe "HTTP/1.1 200 OK"
+2026-04-14 21:59:11,254 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/deleteWebhook "HTTP/1.1 200 OK"
+2026-04-14 21:59:11,258 | INFO | telegram.ext.Application | Application started
+2026-04-14 21:59:11,749 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:59:12,098 | INFO | pymongo.serverSelection | {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 69de72607a51cb5f4806ffd2, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-44yo8g2-shard-00-00.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-01.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-44yo8g2-shard-00-02.9oq3evw.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "69de72607a51cb5f4806ffd2"}, "remainingTimeMS": 29}
+2026-04-14 21:59:14,143 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:15,118 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:15,656 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:16,181 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:16,695 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:17,279 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:17,797 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:18,315 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:18,852 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:19,372 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:19,907 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:20,432 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:20,974 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:21,682 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:22,195 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:22,719 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:23,228 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:23,742 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:24,131 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:59:24,274 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:24,815 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/sendMessage "HTTP/1.1 200 OK"
+2026-04-14 21:59:34,290 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
+2026-04-14 21:59:44,465 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8742602538:AAHjPDRSVeql_KB_8KnpWeYb6H_mvcbK4VM/getUpdates "HTTP/1.1 200 OK"
